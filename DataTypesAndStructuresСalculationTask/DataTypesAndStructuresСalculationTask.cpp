@@ -1,6 +1,8 @@
-﻿#include <iostream>
+﻿#include "BST.h"
+#include <iostream>
 
 int main()
 {
     std::cout << "Hello World!\n";
+    BST bst;
 }
