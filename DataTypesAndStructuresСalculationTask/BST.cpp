@@ -1,14 +1,15 @@
 #include "BST.h"
 
-/*void BST::makeEmpty(node* t) {
+//”даление дерева
+void BST::makeEmpty(node* t) {
 	if (t->left)
 		makeEmpty(t->left);
-	if (t->left)
+	if (t->right)
 		makeEmpty(t->right);
 	delete t;
-}*/
+}
 
-//добавление узла в бинарное дерево
+//ƒобавление узла в бинарное дерево
 node* BST::insert(int x, node* t)
 {
 	if (t == NULL)
@@ -24,7 +25,7 @@ node* BST::insert(int x, node* t)
 	return t;
 }
 
-// поиск в бинарном дереве min
+//ѕоиск в бинарном дереве min
 node* BST::findMin(node* t)
 {
 	if (t == NULL)
@@ -35,7 +36,7 @@ node* BST::findMin(node* t)
 		return findMin(t->left);
 }
 
-// поиск в бинарном дереве max
+//ѕоиск в бинарном дереве max
 node* BST::findMax(node* t) {
 	if (t == NULL)
 		return NULL;
@@ -45,7 +46,7 @@ node* BST::findMax(node* t) {
 		return findMax(t->right);
 }
 
-//удаление вершины из бинарного дерева
+//”даление вершины из бинарного дерева
 node* BST::remove(int x, node* t) {
 	node* temp;
 	if (t == NULL)
@@ -72,7 +73,7 @@ node* BST::remove(int x, node* t) {
 	return t;
 }
 
-//симметричный обход бинарного дерева
+//—имметричный обход бинарного дерева
 void BST::inorder(node* t) {
 	if (t == NULL)
 		return;
@@ -81,7 +82,7 @@ void BST::inorder(node* t) {
 	inorder(t->right);
 }
 
-// поиск в бинарном дереве
+//ѕоиск в бинарном дереве
 node* BST::find(node* t, int x) {
 	if (t == NULL)
 		return NULL;
@@ -93,7 +94,7 @@ node* BST::find(node* t, int x) {
 		return t;
 }
 
-//печать бинарного дерева в виде дерева повернутого на -90 градусов
+//ѕечать бинарного дерева в виде дерева повернутого на -90 градусов
 void BST::print_tree(node* t, int l) {
 	if (t == NULL)
 		return;
@@ -104,31 +105,35 @@ void BST::print_tree(node* t, int l) {
 	print_tree(t->left, l + 1);
 }
 
+// онструктор класса
 BST::BST() {
+	Node = node();
 	root = NULL;
 }
 
+//ƒеструктор класса
 BST::~BST() {
-	//makeEmpty(root);
+	Node.~node();
+	makeEmpty(root);
 	root = nullptr;
 }
 
-//добавление узла в бинарное дерево.
+//ƒобавление узла в бинарное дерево.
 void BST::insert(int x) {
 	root = insert(x, root);
 }
 
-//удаление вершины из бинарного дерева
+//”даление вершины из бинарного дерева
 void BST::remove(int x) {
 	root = remove(x, root);
 }
-//печать бинарного дерева в виде массива отсортированного по возрастанию
+//ѕечать бинарного дерева в виде массива отсортированного по возрастанию
 void BST::display() {
 	inorder(root);
 	cout << endl;
 }
 
-// поиск в бинарном дереве
+//ѕоиск в бинарном дереве
 bool BST::search(int x) {
 	if (find(root, x))
 		return true;
@@ -136,14 +141,35 @@ bool BST::search(int x) {
 		return false;
 }
 
-//печать бинарного дерева в виде дерева повернутого на -90 градусов
+//ѕечать бинарного дерева в виде дерева повернутого на -90 градусов
 void BST::display_tree() {
 	cout << endl << endl;
 	print_tree(root, 0);
 	cout << endl << endl;
 }
 
-// проверка пустоты бинарного дерева
+//ѕроверка пустоты бинарного дерева
 bool BST::is_empty() {
 	return !root;
+}
+
+//ћетод вывода в файл
+void BST::output_to_file(ofstream* filename) {
+
+}
+
+//ћетод чтени€ из файла
+void BST::input_from_file(ifstream* filename) {
+	int buffer;
+	while (!(*filename).eof()) {
+		*filename >> buffer;
+		this->insert(buffer);
+	}
+}
+
+//ќпредел€ет максимальное число потомков одного узла на двух ближайших уровн€х 
+int BST::max_num_of_children(int level) {
+	int count = 0;
+
+	return count;
 }

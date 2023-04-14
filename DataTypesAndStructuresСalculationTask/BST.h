@@ -1,6 +1,7 @@
 #pragma once
 #include "node.h"
 #include<iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -8,7 +9,7 @@ class BST {
 private:
 	node Node;
 	node* root;
-	//void makeEmpty(node* t); //Удаление дерева
+	void makeEmpty(node* t); //Удаление дерева
 	node* insert(int x, node* t); //Добавление узла в бинарное дерево
 	node* findMin(node* t); //Поиск в бинарном дереве min
 	node* findMax(node* t); //Поиск в бинарном дереве max
@@ -25,5 +26,8 @@ public:
 	bool search(int x); //Поиск в бинарном дереве
 	void display_tree(); //Печать бинарного дерева в виде дерева повернутого на -90 градусов
 	bool is_empty(); //Проверка пустоты бинарного дерева
+	void output_to_file(ofstream* filename); //Метод вывода в файл
+	void input_from_file(ifstream* filename); //Метод чтения из файла
+	int max_num_of_children(int level); //Определяет максимальное число потомков одного узла на двух ближайших уровнях 
 };
 
