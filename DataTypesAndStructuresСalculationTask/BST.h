@@ -16,7 +16,8 @@ private:
 	node* remove(int x, node* t); //Удаление вершины из бинарного дерева
 	void inorder(node* t); //Симметричный обход бинарного дерева
 	node* find(node* t, int x); //Поиск в бинарном дереве
-	void print_tree(node* t, int l); //Печать бинарного дерева в виде дерева повернутого на -90 градусов
+	void print_tree(node* t, int l); //Печать бинарного дерева
+	int max_children(int n); //Используется get_lvl_of_max_children() и get_max_children()
 public:
 	BST(); //Конструктор класса
 	~BST(); //Деструктор класса
@@ -28,8 +29,7 @@ public:
 	bool is_empty(); //Проверка пустоты бинарного дерева
 	void output_to_file(ofstream* filename); //Метод вывода в файл
 	void input_from_file(ifstream* filename); //Метод чтения из файла
-	int max_count_of_children(); //Определяет уровень на узла у которого наибольшее число потомков
-	int get_lvl_of_MCOC(int max_count_of_children, node* t);
-	int get_lvl_of_MCOC();
+	int get_lvl_of_max_children(); //Определяет уровень узла у которого наибольшее число потомков
+	int get_max_children(); //Определяет наибольшее число потомков
 };
 

@@ -98,7 +98,7 @@ node* BST::find(node* t, int x) {
 		return t;
 }
 
-//Печать бинарного дерева в виде дерева повернутого на -90 градусов
+//Печать бинарного дерева
 void BST::print_tree(node* t, int l) {
 	if (t == NULL)
 		return;
@@ -173,7 +173,7 @@ void BST::input_from_file(ifstream* filename) {
 }
 
 //Определяет максимальное число потомков одного узла на двух ближайших уровнях
-int BST::max_count_of_children() {
+int BST::max_children(int n) {
 	int count, count1, level;
 	if (root == NULL)
 		return 0;
@@ -194,6 +194,18 @@ int BST::max_count_of_children() {
 			level = root->right->level;
 		}
 	}
-	cout << level;
-	return count;
+	if(n == 0)
+		return level;
+	if(n == 1)
+		return count;
+}
+
+//Определяет уровень узла у которого наибольшее число потомков
+int BST::get_lvl_of_max_children() {
+	return this->max_children(0);
+}
+
+//Определяет наибольшее число потомков
+int BST::get_max_children() {
+	return this->max_children(1);
 }

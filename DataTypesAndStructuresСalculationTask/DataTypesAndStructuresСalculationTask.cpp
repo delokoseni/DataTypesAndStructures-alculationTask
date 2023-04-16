@@ -21,9 +21,9 @@ int main()
     bst1.insert(10);
     bst1.insert(7);
     bst1.display_tree();
-    cout << bst.max_count_of_children() << endl;
-    cout << bst1.max_count_of_children() << endl;
-    //cout << bst.get_lvl_of_MCOC() << endl;
-    //cout << bst1.get_lvl_of_MCOC() << endl;
+    cout << "Максимальное число потомков: " << bst.get_max_children() << endl;
+    cout << "Уровень с максимальным числом потомков: " << bst.get_lvl_of_max_children() << endl;
+    cout << "Максимальное число потомков: " << bst1.get_max_children() << endl;
+    cout << "Уровень с максимальным числом потомков: " << bst1.get_lvl_of_max_children() << endl;
     return 0;
 }
