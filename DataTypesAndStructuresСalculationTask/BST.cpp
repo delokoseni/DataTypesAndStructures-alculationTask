@@ -98,17 +98,6 @@ node* BST::find(node* t, int x) {
 		return t;
 }
 
-//Печать бинарного дерева
-void BST::print_tree(node* t, int l) {
-	if (t == NULL)
-		return;
-	print_tree(t->right, l + 1);
-	for (int i = 0; i < l; ++i)
-		cout << "\t";
-	cout << t->data << endl;
-	print_tree(t->left, l + 1);
-}
-
 //Конструктор класса
 BST::BST() {
 	Node = node();
@@ -146,11 +135,31 @@ bool BST::search(int x) {
 		return false;
 }
 
+//Печать бинарного дерева
+void BST::print_tree(node* t, int l) {
+	if (t == NULL)
+		return;
+	print_tree(t->right, l + 1);
+	for (int i = 0; i < l; ++i)
+		cout << "\t";
+	cout << t->data << endl;
+	print_tree(t->left, l + 1);
+}
+
 //Печать бинарного дерева в виде дерева повернутого на -90 градусов
 void BST::display_tree() {
 	cout << endl << endl;
 	print_tree(root, 0);
 	cout << endl << endl;
+}
+
+void BST::print_pic() {
+	int padding = 0;
+	cout << root->data;
+	if (root->right)
+		root->right->print_pic((char)"r");
+	if(root->left)
+		root->left->print_pic((char)"l");
 }
 
 //Проверка пустоты бинарного дерева

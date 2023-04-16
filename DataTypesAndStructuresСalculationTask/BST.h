@@ -31,5 +31,6 @@ public:
 	void input_from_file(ifstream* filename); //Метод чтения из файла
 	int get_lvl_of_max_children(); //Определяет уровень узла у которого наибольшее число потомков
 	int get_max_children(); //Определяет наибольшее число потомков
+	void print_pic();
 };
 

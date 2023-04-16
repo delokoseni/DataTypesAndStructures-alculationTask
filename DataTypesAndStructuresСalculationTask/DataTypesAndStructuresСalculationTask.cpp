@@ -21,6 +21,7 @@ int main()
     bst1.insert(10);
     bst1.insert(7);
     bst1.display_tree();
+    bst1.print_pic();
     cout << "Максимальное число потомков: " << bst.get_max_children() << endl;
     cout << "Уровень с максимальным числом потомков: " << bst.get_lvl_of_max_children() << endl;
     cout << "Максимальное число потомков: " << bst1.get_max_children() << endl;
