@@ -28,7 +28,8 @@ public:
 	bool is_empty(); //Проверка пустоты бинарного дерева
 	void output_to_file(ofstream* filename); //Метод вывода в файл
 	void input_from_file(ifstream* filename); //Метод чтения из файла
-	int count_of_children(); //Определяет число потомков одного узла на двух ближайших уровнях 
 	int max_count_of_children(); //Определяет уровень на узла у которого наибольшее число потомков
+	int get_lvl_of_MCOC(int max_count_of_children, node* t);
+	int get_lvl_of_MCOC();
 };
 
