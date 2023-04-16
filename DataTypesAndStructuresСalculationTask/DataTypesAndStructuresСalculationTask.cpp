@@ -16,6 +16,11 @@ int main()
     bst1.insert(1);
     bst1.insert(5);
     bst1.insert(9);
+    bst1.insert(12);
     bst1.display_tree();
+    cout << bst.max_count_of_children() << endl;
+    cout << bst1.max_count_of_children() << endl;
+    cout << bst.count_of_children() << endl;
+    cout << bst1.count_of_children() << endl;
     return 0;
 }
