@@ -18,9 +18,9 @@ int main()
     bst1.insert(9);
     bst1.insert(12);
     bst1.display_tree();
-    cout << bst.max_count_of_children() << endl;
-    cout << bst1.max_count_of_children() << endl;
-    cout << bst.count_of_children() << endl;
-    cout << bst1.count_of_children() << endl;
+    //cout << bst.max_count_of_children() << endl;
+    //cout << bst1.max_count_of_children() << endl;
+    cout << bst.get_lvl_of_MCOC(bst.max_count_of_children()) << endl;
+    cout << bst1.get_lvl_of_MCOC(bst1.max_count_of_children()) << endl;
     return 0;
 }

@@ -171,44 +171,38 @@ static int lvl = 0;
 //Определяет максимальное число потомков одного узла на двух ближайших уровнях
 int BST::max_count_of_children() {
 	int count, count1;
-	node* somenode = NULL;
 	if (root == NULL)
 		return 0;
 	count = root->count_of_children();
 	count1 = count;
 	if (root->left) {
 		count1 = root->left->count_of_children();
-		lvl++;
 		if (count1 > count)
 			count  = count1;
 	}
 	if (root->right) {
 		count1 = root->right->count_of_children();
-		lvl++;
 		if (count1 > count)
 			count = count1;
 	}
-	lvl = 0;
 	return count;
 }
 
-//Определяет число потомков одного узла на двух ближайших уровнях 
-int BST::count_of_children() {
-	int count = 0;
-	if (this->root->left) {
-		count++;
-		if (this->root->left->left)
-			count++;
-		if (this->root->left->right)
-			count++;
-	}
-	if (this->root->right) {
-		count++;
-		if (this->root->right->left)
-			count++;
-		if (this->root->right->right)
-			count++;
-	}
-	cout << root->count_of_children() << endl;
-	return count;
+int BST::get_lvl_of_MCOC(int max_count_of_children) {
+	int level = 0;
+	level = this->get_lvl_of_MCOC(max_count_of_children, root);
+	return level;
+}
+
+int BST::get_lvl_of_MCOC(int max_count_of_children, node* t) {
+	static int level = 0, count = 0;
+	if (t == NULL)
+		return 0;
+	count = t->count_of_children();
+	level++;
+	if(count == max_count_of_children)
+		return level;
+	//level--;
+	this->get_lvl_of_MCOC(max_count_of_children, t->left);
+	this->get_lvl_of_MCOC(max_count_of_children, t->right);
 }
