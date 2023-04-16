@@ -18,10 +18,14 @@ node* BST::insert(int x, node* t)
 		t->data = x;
 		t->left = t->right = NULL;
 	}
-	else if (x < t->data)
+	else if (x < t->data) {
 		t->left = insert(x, t->left);
-	else if (x > t->data)
+		t->left->level = t->level + 1;
+	}
+	else if (x > t->data) {
 		t->right = insert(x, t->right);
+		t->right->level = t->level + 1;
+	}
 	return t;
 }
 
@@ -108,6 +112,7 @@ void BST::print_tree(node* t, int l) {
 //Конструктор класса
 BST::BST() {
 	Node = node();
+	Node.level = 0;
 	root = NULL;
 }
 
@@ -167,43 +172,28 @@ void BST::input_from_file(ifstream* filename) {
 	}
 }
 
-static int lvl = 0;
 //Определяет максимальное число потомков одного узла на двух ближайших уровнях
 int BST::max_count_of_children() {
-	int count, count1;
+	int count, count1, level;
 	if (root == NULL)
 		return 0;
 	count = root->count_of_children();
 	count1 = count;
+	level = root->level;
 	if (root->left) {
 		count1 = root->left->count_of_children();
-		if (count1 > count)
-			count  = count1;
+		if (count1 > count) {
+			count = count1;
+			level = root->left->level;
+		}
 	}
 	if (root->right) {
 		count1 = root->right->count_of_children();
-		if (count1 > count)
+		if (count1 > count) {
 			count = count1;
+			level = root->right->level;
+		}
 	}
+	cout << level;
 	return count;
-}
-
-int BST::get_lvl_of_MCOC() {
-	int level = 0;
-	int max_count_of_children = this->max_count_of_children();
-	level = this->get_lvl_of_MCOC(max_count_of_children, root);
-	return level;
-}
-
-int BST::get_lvl_of_MCOC(int max_count_of_children, node* t) {
-	static int level = 0, count = 0;
-	if (t == NULL)
-		return 0;
-	count = t->count_of_children();
-	level++;
-	if(count == max_count_of_children)
-		return level;
-	//level--;
-	this->get_lvl_of_MCOC(max_count_of_children, t->left);
-	this->get_lvl_of_MCOC(max_count_of_children, t->right);
 }

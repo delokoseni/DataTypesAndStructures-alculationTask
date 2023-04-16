@@ -5,6 +5,7 @@ class node
 	friend class BST;	//Класс BST объявлен как дружественный
 private:
 	int data;			//Поле данных
+	int level = 0;			//Поле уровня
 	node* left;			//Указатель на левого потомка
 	node* right;		//Указатель на правого потомка
 	int count_of_children() {
